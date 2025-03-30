@@ -14,9 +14,11 @@ public interface EmployeeMapper {
     EmployeeMapper INSTANCE = Mappers.getMapper(EmployeeMapper.class);
 
     @Mapping(target = "managerDto", source = "manager")
+    @Mapping(target = "timesheetDtos", source = "timesheetList")
     EmployeeDto toDTO(Employee employee);
 
     @Mapping(target = "manager", source = "managerDto")
+    @Mapping(target = "timesheetList", source = "timesheetDtos")
     Employee toEntity(EmployeeDto employeeDto);
 
     List<EmployeeDto> toDTOList(List<Employee> employees);
