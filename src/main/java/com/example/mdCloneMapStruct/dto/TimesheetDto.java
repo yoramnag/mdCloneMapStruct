@@ -1,6 +1,7 @@
 package com.example.mdCloneMapStruct.dto;
 
 import com.example.mdCloneMapStruct.utils.ApprovalStatus;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,6 +14,7 @@ public class TimesheetDto {
     private Date startDate;
     private Date endDate;
     private ApprovalStatus approvalStatus;
+    @JsonIgnore
     private EmployeeDto employeeDto;
 
     public TimesheetDto() {

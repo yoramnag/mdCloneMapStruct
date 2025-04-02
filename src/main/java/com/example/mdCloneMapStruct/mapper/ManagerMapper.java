@@ -8,7 +8,7 @@ import com.example.mdCloneMapStruct.entity.Manager;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {EmployeeMapper.class})
 public interface ManagerMapper {
 
     ManagerMapper INSTANCE = Mappers.getMapper(ManagerMapper.class);
