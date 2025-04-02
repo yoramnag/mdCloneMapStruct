@@ -1,5 +1,7 @@
 package com.example.mdCloneMapStruct.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 public class EmployeeDto {
@@ -8,6 +10,7 @@ public class EmployeeDto {
     private String lastName;
     private String role;
     private List<TimesheetDto> timesheetDtos;
+    @JsonIgnore
     private ManagerDto managerDto;
 
     public EmployeeDto() {
