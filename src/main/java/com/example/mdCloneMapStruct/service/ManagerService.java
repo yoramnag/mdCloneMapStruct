@@ -23,4 +23,9 @@ public class ManagerService {
         List<Manager> managerList = managerRepository.findAll();
         return managerMapper.toDTOList(managerList);
     }
+
+    public ManagerDto findByName(String firstName, String lastName) {
+
+        return null;
+    }
 }

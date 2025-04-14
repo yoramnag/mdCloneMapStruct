@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -27,5 +28,11 @@ public class ManagerRestController {
     public ResponseEntity<List<ManagerDto>> getAllManagers(){
         List<ManagerDto> managerDtoList = managerService.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(managerDtoList);
+    }
+
+    @GetMapping("/getManagerByName")
+    public ResponseEntity<ManagerDto> getManagerByName(@RequestParam String firstName, @RequestParam String lastName){
+        ManagerDto managerDto = managerService.findByName(firstName,lastName);
+        return ResponseEntity.status(HttpStatus.OK).body(managerDto);
     }
 }

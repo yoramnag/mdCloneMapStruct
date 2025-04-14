@@ -7,6 +7,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
+import java.util.Optional;
 
 @Mapper(componentModel = "spring", uses = {TimesheetMapper.class})
 public interface EmployeeMapper {
@@ -20,6 +21,10 @@ public interface EmployeeMapper {
     @Mapping(target = "manager", source = "managerDto")
     @Mapping(target = "timesheetList", source = "timesheetDtos")
     Employee toEntity(EmployeeDto employeeDto);
+
+    default EmployeeDto fromOptional(Optional<Employee> optional) {
+        return optional.map(this::toDTO).orElse(null);  // Use the correct method here
+    }
 
     List<EmployeeDto> toDTOList(List<Employee> employees);
     List<Employee> toEntityList(List<EmployeeDto> employeeDtos);
